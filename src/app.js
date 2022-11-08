@@ -6,6 +6,7 @@ import './styles/app.css'
 
 function App() {
   const [emails, setEmails] = useState(initialEmails)
+  // state set as intialEmails so all existing emails render
   console.log(initialEmails)
 
   return (
@@ -40,6 +41,7 @@ function App() {
         </ul>
       </nav>
       <main className="emails">
+        {/* using a map function here to render the list of email of emails */}
         {emails.map((email) => (
           <li className="email">
             <div className="select">
@@ -47,11 +49,9 @@ function App() {
             </div>
             <div className="star">
               <input
-                className="star-checkbox"
-                type="checkbox"
-                checked={email.starred}
-              />
+                className="star-checkbox"  type="checkbox"/>
             </div>
+            {/* existing data is interpolated */}
             <div className="sender"> {email.sender}</div>
             <div className="title">{email.title}</div>
           </li>
