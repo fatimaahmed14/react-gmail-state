@@ -42,20 +42,24 @@ function App() {
       </nav>
       <main className="emails">
         {/* using a map function here to render the list of email of emails */}
-        {emails.map((email) => (
-          <li className="email">
+        {emails.map((email) => { 
+          const emailCSSClass = email.read ? "email read" : "email unread"
+          return (
+          <li className= {emailCSSClass} key = {email.id}>
             <div className="select">
               <input className="select-checkbox" type="checkbox" />
             </div>
             <div className="star">
               <input
-                className="star-checkbox"  type="checkbox"/>
+                className="star-checkbox"
+                  type="checkbox"
+                  checked = {email.starred}/>
             </div>
             {/* existing data is interpolated */}
             <div className="sender"> {email.sender}</div>
             <div className="title">{email.title}</div>
           </li>
-        ))}
+        )})}
       </main>
     </div>
   )
